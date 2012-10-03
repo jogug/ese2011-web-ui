@@ -1,0 +1,61 @@
+.selected {
+    font-size: 20;
+    font-weight: bold ;
+    color: #6495ed ;
+    text-align: center;
+}
+.not_selected{
+    font-size: 20;
+    font-weight: bold ;
+    color: black ;
+    text-align: center;
+}
+
+.buyable {
+    font-size: 13;
+    font-weight: bold ;
+    color: #adff2f ;
+    background-color: green;
+    text-align: center;
+}
+
+.sale {
+    font-size: 15 ;
+    color: red ;
+    text-align: center;
+}
+
+.invi {
+    visibility: hidden;
+    font-size: 0;
+    width: 0;
+    height: 0;
+    text-align: center;
+}
+
+.mine {
+    font-size: 15 ;
+    color: #ff7f50 ;
+    text-align: center;
+}
+
+.buyable_mine{
+    font-size: 15 ;
+    color: #adff2f ;
+    text-align: center;
+}
+
+.sell {
+    font-size: 13;
+    font-weight: bold ;
+    color: #dc143c ;
+    background-color: #a52a2a;
+    text-align: center;
+}
+
+.header {
+    font-size: 30;
+    color: #708090;
+    text-align: center;
+}
+

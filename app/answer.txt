@@ -1,0 +1,4 @@
+1)The browser sends a HTTP-Request to the Server.
+ then the Controller handles the data of the request and after thats the view is modified.
+2)Get has to be indemptent so that multiple requests at the same time return the same result.
+3)In the view layer of mvc.

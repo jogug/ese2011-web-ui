@@ -1,0 +1,52 @@
+%link(rel="stylesheet" type="text/css" href="/style.css")
+
+%html
+  %head
+    %title Users
+  %body
+    %table{:style => "text-align: center; width: 100%; height: 35%; padding-left: 23%; padding-right: 23%;"}
+      %tbody
+        %tr{:style => "height: 30%;  background-color:#ffe4c4"}
+          %td{:class => "header",:style => "width: 14%;"}
+            Users
+          %td{:class => "header" ,:style => "width: 19%;"}
+            Active items
+          %td{:class => "header",:style => "width: 19%;"}
+            %a{:href => "/logout", :class => "logout"} Logout
+
+
+        - for user in users
+          - if user.name == current_name
+            %tr{:style => "height: #{70/users.size}%;  background-color:#87ceeb"}
+              %td{ :class => "selected"}
+                #{user.name}
+                %p (Credits = #{user.get_credits})
+                %td{:class => "buyable_mine"}
+                  - if user.items_on_sale.size > 0
+                    - for item in user.items_on_sale
+                      #{item.name} #{item.price}
+                %td{:class => "mine"}
+                  - if user.items_no_sale.size > 0
+                    -for item in user.items_no_sale
+                      #{item.name} #{item.price}
+          - else
+            %tr{:style => "height: #{70/users.size}%"}
+              %td{:class => "not_selected"}
+                #{user.name}
+                %td
+                  - if user.items_on_sale.size > 0
+                    - for item in user.items_on_sale
+                      - if item.price <= user.get_credits
+                        %form( action="/buy" method="POST" )
+                          %input(type = "text" name="seller_fetch" value = "#{user.name}" class="invi" )
+                          %input(type = "text"name="buyer_fetch" value = "#{current_name}" class="invi")
+                          %input(type="submit" name="item_fetch" value="#{item.name}" class="buyable") Price: #{item.price}
+                      - else
+                        %p{:class => "sale"}   #{item.name} #{item.price}
+                %td{:class => "mine"}
+                  - if user.items_no_sale.size > 0
+                    - for item in user.items_no_sale
+                      #{item.name} #{item.price} 
+%hr
+
+Time: #{time.strftime("%H:%M:%S")}
